@@ -6,6 +6,6 @@ public class Main {
 
         game.initializeBoard();
         game.printBoard();
-        System.out.print(game.getOpponent('B'));
+        System.out.print(game.getOpponent('W'));
     }
 }
