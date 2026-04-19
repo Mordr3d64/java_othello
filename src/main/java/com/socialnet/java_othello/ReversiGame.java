@@ -6,19 +6,29 @@ public class ReversiGame {
     static final char BLACK = 'B';
     static final char WHITE = 'W';
 
-    char[][] board = new char[8][8];
+    Disc[][] board = new Disc[8][8];
+
+    boolean isEmpty(int row, int col) {
+        return board[row][col] == null;
+    }
+
+    char getOpponent(char player) {
+        return (player == 'B') ? 'W' : 'B';
+    }
 
     public void initializeBoard() {
+        // Empty board (null = empty)
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
-                board[i][j] = EMPTY;
+                board[i][j] = null;
             }
         }
 
-        board[3][3] = WHITE;
-        board[3][4] = BLACK;
-        board[4][3] = BLACK;
-        board[4][4] = WHITE;
+        // Starting pieces
+        board[3][3] = new Disc('W');
+        board[3][4] = new Disc('B');
+        board[4][3] = new Disc('B');
+        board[4][4] = new Disc('W');
     }
 
     public void printBoard() {
@@ -31,7 +41,11 @@ public class ReversiGame {
         for (int i = 0; i < 8; i++) {
             System.out.print(i + " ");
             for (int j = 0; j < 8; j++) {
-                System.out.print(board[i][j] + " ");
+                if (board[i][j] == null) {
+                    System.out.print(". ");
+                } else {
+                    System.out.print(board[i][j].getColor() + " ");
+                }
             }
             System.out.println();
         }
