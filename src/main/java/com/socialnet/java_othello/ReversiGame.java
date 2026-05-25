@@ -2,25 +2,27 @@ package com.socialnet.java_othello;
 
 public class ReversiGame {
 
+    int[] dx = {-1, -1, -1, 0, 0, 1, 1, 1};
+    int[] dy = {-1, 0, 1, -1, 1, -1, 0, 1};
+
     static final char EMPTY = '.';
     static final char BLACK = 'B';
     static final char WHITE = 'W';
 
     Board board = new Board();
 
+    char currentPlayer = 'B'; // Black starts
+
     char getOpponent(char player) {
         return (player == 'B') ? 'W' : 'B';
     }
 
     public void initializeBoard() {
-        // Clear board
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
                 board.set(i, j, null);
             }
         }
-
-        // Starting pieces
         board.set(3, 3, new Disc('W'));
         board.set(3, 4, new Disc('B'));
         board.set(4, 3, new Disc('B'));
@@ -45,5 +47,70 @@ public class ReversiGame {
             }
             System.out.println();
         }
+    }
+    boolean checkDirection(int row, int col, int dx, int dy, char player) {
+        char opponent = getOpponent(player);
+
+        int i = row + dx;
+        int j = col + dy;
+
+        // Step 1: must have opponent first
+        if (i < 0 || i >= 8 || j < 0 || j >= 8 ||
+                board.isEmpty(i, j) ||
+                board.get(i, j).getColor() != opponent) {
+            return false;
+        }
+
+        // Step 2: move along direction
+        i += dx;
+        j += dy;
+
+        while (i >= 0 && i < 8 && j >= 0 && j < 8) {
+            if (board.isEmpty(i, j)) return false;
+
+            if (board.get(i, j).getColor() == player) {
+                return true;
+            }
+
+            i += dx;
+            j += dy;
+        }
+
+        return false;
+    }
+    boolean isValidMove(int row, int col, char player) {
+        // Must be empty
+        if (!board.isEmpty(row, col)) return false;
+
+        for (int d = 0; d < 8; d++) {
+            if (checkDirection(row, col, dx[d], dy[d], player)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    boolean hasValidMove(char player) {//iterates through isValidMove board amount of times, idk about the efficiency though
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if (isValidMove(i, j, player)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    void switchPlayer() {
+        currentPlayer = (currentPlayer == 'B') ? 'W' : 'B';
+    }
+
+    
+
+
+    public void startGame() {
+        //black first
+        //check for possible moves
     }
 }
