@@ -28,7 +28,7 @@ public class ReversiGame {
         board.set(4, 3, new Disc('B'));
         board.set(4, 4, new Disc('W'));
     }
-
+    //testcommit
     public void printBoard() {
         System.out.print("  ");
         for (int i = 0; i < 8; i++) {
@@ -106,8 +106,9 @@ public class ReversiGame {
         currentPlayer = (currentPlayer == 'B') ? 'W' : 'B';
     }
 
-    
+    void flipDiscs(int row, int col, char player) {
 
+    }
 
     public void startGame() {
         //black first
