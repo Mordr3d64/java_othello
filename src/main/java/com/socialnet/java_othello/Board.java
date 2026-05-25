@@ -1,5 +1,5 @@
 package com.socialnet.java_othello;
-
+//board setup
 public class Board {
     private Disc[][] grid = new Disc[8][8];
 

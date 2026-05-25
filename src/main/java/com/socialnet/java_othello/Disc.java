@@ -1,5 +1,5 @@
 package com.socialnet.java_othello;
-
+//discs
 public class Disc {
     private char color; // 'B' or 'W'
 

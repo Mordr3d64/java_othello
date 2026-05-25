@@ -1,4 +1,7 @@
 package com.socialnet.java_othello;
+//everything else logic
+import java.util.ArrayList;
+import java.util.List;
 
 public class ReversiGame {
 
@@ -23,11 +26,13 @@ public class ReversiGame {
                 board.set(i, j, null);
             }
         }
+
         board.set(3, 3, new Disc('W'));
         board.set(3, 4, new Disc('B'));
         board.set(4, 3, new Disc('B'));
         board.set(4, 4, new Disc('W'));
     }
+
     //testcommit
     public void printBoard() {
         System.out.print("  ");
@@ -48,6 +53,7 @@ public class ReversiGame {
             System.out.println();
         }
     }
+
     boolean checkDirection(int row, int col, int dx, int dy, char player) {
         char opponent = getOpponent(player);
 
@@ -66,6 +72,7 @@ public class ReversiGame {
         j += dy;
 
         while (i >= 0 && i < 8 && j >= 0 && j < 8) {
+
             if (board.isEmpty(i, j)) return false;
 
             if (board.get(i, j).getColor() == player) {
@@ -78,39 +85,77 @@ public class ReversiGame {
 
         return false;
     }
+
     boolean isValidMove(int row, int col, char player) {
+
         // Must be empty
         if (!board.isEmpty(row, col)) return false;
 
         for (int d = 0; d < 8; d++) {
+
             if (checkDirection(row, col, dx[d], dy[d], player)) {
                 return true;
             }
+
         }
 
         return false;
     }
 
-    boolean hasValidMove(char player) {//iterates through isValidMove board amount of times, idk about the efficiency though
+    boolean hasValidMove(char player) {
+
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
+
                 if (isValidMove(i, j, player)) {
                     return true;
                 }
+
             }
         }
+
         return false;
     }
 
-    void switchPlayer() {
+    // ===== VALID MOVE LIST =====
+
+    public List<Move> getValidMoves(char player) {
+
+        List<Move> validMoves = new ArrayList<>();
+
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+
+                if (isValidMove(i, j, player)) {
+                    validMoves.add(new Move(i, j));
+                }
+
+            }
+        }
+
+        return validMoves;
+    }
+
+    public void switchPlayer() {
         currentPlayer = (currentPlayer == 'B') ? 'W' : 'B';
     }
 
-    void flipDiscs(int row, int col, char player) {
+    //3
+    public void makeMove(int row, int col, char player) {
 
     }
 
-    public void startGame() {
+    //2
+    private void flipDiscs(int row, int col, char player) {
+
+    }
+
+    //1
+    private void flipDirection(int row, int col, int dx, int dy, char player) {
+
+    }
+
+    void startGame() {
         //black first
         //check for possible moves
     }
