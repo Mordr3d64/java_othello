@@ -2,7 +2,7 @@ package com.socialnet.java_othello;
 import java.util.ArrayList;
 import java.util.List;
 
-//everything else logic
+//clusterfuck of everything else logic
 public class ReversiGame {
     int[] dx = {-1, -1, -1, 0, 0, 1, 1, 1};
     int[] dy = {-1, 0, 1, -1, 1, -1, 0, 1};
@@ -72,11 +72,9 @@ public class ReversiGame {
         // Must be empty
         if (!board.isEmpty(row, col)) return false;
         for (int d = 0; d < 8; d++) {
-
             if (checkDirection(row, col, dx[d], dy[d], player)) {
                 return true;
             }
-
         }
         return false;
     }
@@ -103,7 +101,6 @@ public class ReversiGame {
                 }
             }
         }
-
         return validMoves;
     }
 
@@ -111,7 +108,6 @@ public class ReversiGame {
         currentPlayer = (currentPlayer == 'B') ? 'W' : 'B';
     }
 
-    //3
     public void makeMove(int row, int col, char player) {
         if (!isValidMove(row, col, player)) {
             System.out.println("Invalid");
@@ -122,14 +118,13 @@ public class ReversiGame {
         switchPlayer();
     }
 
-    //2
+
     private void flipDiscs(int row, int col, char player) {
         for (int d = 0; d < 8; d++) {
             flipDirection(row, col, dx[d], dy[d], player);
         }
     }
 
-    //1
     private void flipDirection(int row, int col, int dx, int dy, char player) {
         if (!checkDirection(row, col, dx, dy, player)) {
             return;
