@@ -138,8 +138,17 @@ public class ReversiGame {
         }
     }
 
-    void startGame() {
-        //black first
-        //check for possible moves
+    public void startGame() {
+        initializeBoard();
+        currentPlayer = BLACK;
+        printBoard();
+        System.out.println();
+        System.out.println("Current player: " + currentPlayer);
+        System.out.println("Valid moves: ");
+        System.out.println(getValidMoves(currentPlayer));
+        for (Move move : getValidMoves(currentPlayer)) {
+            System.out.println(move);
+        }
     }
 }
+
