@@ -60,7 +60,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.socialnet.java_othello/com.socialnet.java_othello.HelloApplication
+                            <mainClass>com.socialnet.java_othello/com.socialnet.java_othello.ReversiApplication
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
