@@ -11,6 +11,17 @@ public class GameController {
     private Button[][] buttons = new Button[8][8];
     private ReversiGame game = new ReversiGame();
 
+    private void refreshBoard() {
+        for (int row = 0; row < 8; row++) {
+            for (int col = 0; col < 8; col++) {
+                Button button = buttons[row][col];
+                button.setGraphic(null);
+                if (!game.board.isEmpty(row, col)) {
+                    button.setGraphic(game.board.get(row, col).createGraphic());
+                }
+            }
+        }
+    }
     @FXML
     public void initialize() {
         game.startGame();
@@ -22,5 +33,8 @@ public class GameController {
                 boardGrid.add(button, j, i);
             }
         }
+        refreshBoard();
+
+
     }
 }

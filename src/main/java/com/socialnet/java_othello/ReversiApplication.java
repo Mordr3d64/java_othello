@@ -18,6 +18,7 @@ public class ReversiApplication extends Application {
         stage.setTitle("Reversi");
         stage.setScene(scene);
         stage.show();
+
     }
 
     public static void main(String[] args) {
