@@ -19,16 +19,28 @@ public class GameController {
         if (!game.hasValidMove(currentPlayer)) {
             game.skipTurnIfNoMoves();
             refreshBoard();
-            statusLabel.setText("No legal moves for " + currentPlayer + "; turn skipped to " + game.currentPlayer);
-            System.out.println("No legal moves for " + currentPlayer + "; turn skipped to " + game.currentPlayer);
+            if (game.isGameOver()) {
+                String result = game.getGameResultMessage();
+                statusLabel.setText(result);
+                System.out.println(result);
+            } else {
+                statusLabel.setText("No legal moves for " + currentPlayer + "; turn skipped to " + game.currentPlayer);
+                System.out.println("No legal moves for " + currentPlayer + "; turn skipped to " + game.currentPlayer);
+            }
             return;
         }
 
         boolean legalMove = game.makeMove(row, col, currentPlayer);
         if (legalMove) {
             refreshBoard();
-            statusLabel.setText("Legal move at (" + row + ", " + col + "). Current player: " + game.currentPlayer);
-            System.out.println("Legal move at (" + row + ", " + col + ")");
+            if (game.isGameOver()) {
+                String result = game.getGameResultMessage();
+                statusLabel.setText(result);
+                System.out.println(result);
+            } else {
+                statusLabel.setText("Legal move at (" + row + ", " + col + "). Current player: " + game.currentPlayer);
+                System.out.println("Legal move at (" + row + ", " + col + ")");
+            }
         } else {
             statusLabel.setText("Illegal move at (" + row + ", " + col + ")");
             System.out.println("Illegal move at (" + row + ", " + col + ")");

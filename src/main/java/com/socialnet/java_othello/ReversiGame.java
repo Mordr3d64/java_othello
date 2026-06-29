@@ -125,6 +125,43 @@ public class ReversiGame {
         return true;
     }
 
+    public int countDiscs(char player) {
+        int count = 0;
+        for (int row = 0; row < 8; row++) {
+            for (int col = 0; col < 8; col++) {
+                if (!board.isEmpty(row, col) && board.get(row, col).getColor() == player) {
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+
+    public boolean isGameOver() {
+        return countDiscs(BLACK) == 0 || countDiscs(WHITE) == 0 || (!hasValidMove(BLACK) && !hasValidMove(WHITE));
+    }
+
+    public String getGameResultMessage() {
+        if (!isGameOver()) {
+            return null;
+        }
+
+        int blackCount = countDiscs(BLACK);
+        int whiteCount = countDiscs(WHITE);
+
+        if (blackCount == 0 || whiteCount == 0) {
+            char winner = blackCount == 0 ? WHITE : BLACK;
+            return "Game over! Winner: " + winner + " (" + blackCount + "-" + whiteCount + ")";
+        }
+
+        if (blackCount > whiteCount) {
+            return "Game over! Winner: B (" + blackCount + "-" + whiteCount + ")";
+        }
+        if (whiteCount > blackCount) {
+            return "Game over! Winner: W (" + blackCount + "-" + whiteCount + ")";
+        }
+        return "Game over! It's a tie (" + blackCount + "-" + whiteCount + ")";
+    }
 
     private void flipDiscs(int row, int col, char player) {
         for (int d = 0; d < 8; d++) {
