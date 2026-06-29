@@ -14,8 +14,8 @@ todo:
     - scan for any same piece on the row. ^
     - huh the logic actually is pretty easy.
     - flip opposing when placed. ^
-  - turns && turn skipping. ^ to some degree? (basically if the opp has no legal moves it registers as invalid atm as game sequencing dne)
-    - actual game sequencing rn 
+  - turns && turn skipping. ^
+    - actual game sequencing rn ^ 
     - player v player.
     - might add AIs later. (for AI practice)
-  - might make it compatible with a web-browser, a mobile app platforms idk
+  - might make it compatible with a web-browser, and mobile app platforms idk
