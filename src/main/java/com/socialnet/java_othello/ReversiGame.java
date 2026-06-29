@@ -108,14 +108,21 @@ public class ReversiGame {
         currentPlayer = (currentPlayer == 'B') ? 'W' : 'B';
     }
 
-    public void makeMove(int row, int col, char player) {
+    public void skipTurnIfNoMoves() {
+        if (!hasValidMove(currentPlayer)) {
+            switchPlayer();
+        }
+    }
+
+    public boolean makeMove(int row, int col, char player) {
         if (!isValidMove(row, col, player)) {
-            System.out.println("Invalid");
-            return;
+            return false;
         }
         board.set(row, col, new Disc(player));
         flipDiscs(row, col, player);
         switchPlayer();
+        skipTurnIfNoMoves();
+        return true;
     }
 
 
