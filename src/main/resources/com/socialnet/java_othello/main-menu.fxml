@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER"
+      spacing="15.0"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.socialnet.java_othello.MainMenuController">
+
+    <padding>
+        <Insets top="40.0" right="40.0" bottom="40.0" left="40.0"/>
+    </padding>
+
+    <Button fx:id="pvpButton" text="Play PvP" />
+    <Button fx:id="pveButton" text="Play PvE" />
+    <Button fx:id="exitButton" text="Exit" />
+
+</VBox>

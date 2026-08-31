@@ -9,11 +9,14 @@ public class ReversiApplication extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+        FXMLLoader loader = new FXMLLoader(ReversiApplication.class.getResource("main-menu.fxml"));
+        Scene scene = new Scene(loader.load());
 
-        FXMLLoader fxmlLoader =
-                new FXMLLoader(ReversiApplication.class.getResource("game-view.fxml"));
-
-        Scene scene = new Scene(fxmlLoader.load());
+        // give the menu controller the primary stage so it can switch scenes
+        Object controller = loader.getController();
+        if (controller instanceof com.socialnet.java_othello.MainMenuController) {
+            ((com.socialnet.java_othello.MainMenuController) controller).setStage(stage);
+        }
 
         stage.setTitle("Reversi");
         stage.setScene(scene);

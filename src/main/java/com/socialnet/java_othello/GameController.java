@@ -13,6 +13,23 @@ public class GameController {
     private Label statusLabel;
     private Button[][] buttons = new Button[8][8];
     private ReversiGame game = new ReversiGame();
+    private String mode = "PVP"; // default
+
+    public void setMode(String mode) {
+        this.mode = mode;
+        if (statusLabel != null) {
+            statusLabel.setText("Mode: " + mode + " | Current player: " + game.currentPlayer);
+        }
+    }
+
+    private String difficulty = "Normal";
+
+    public void setDifficulty(String difficulty) {
+        this.difficulty = difficulty;
+        if (statusLabel != null) {
+            statusLabel.setText("Mode: " + mode + " (" + difficulty + ") | Current player: " + game.currentPlayer);
+        }
+    }
 
     private void handleSquareClick(int row, int col) {
         char currentPlayer = game.currentPlayer;

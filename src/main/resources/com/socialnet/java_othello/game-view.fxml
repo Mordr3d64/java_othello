@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
 
 <VBox alignment="CENTER"
       spacing="20.0"
@@ -21,6 +22,7 @@
               hgap="2"
               vgap="2"/>
 
+    <Button text="Go Again" />
     <Label fx:id="statusLabel"
            text="Ready to play"/>
 
