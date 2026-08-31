@@ -15,6 +15,12 @@ public class GameController {
     private ReversiGame game = new ReversiGame();
     private String mode = "PVP"; // default
 
+    @FXML
+    private void goAgain() {
+        game.startGame();
+        refreshBoard();
+    }
+
     public void setMode(String mode) {
         this.mode = mode;
         if (statusLabel != null) {

@@ -22,7 +22,7 @@
               hgap="2"
               vgap="2"/>
 
-    <Button text="Go Again" />
+    <Button text="Go Again" onAction="#goAgain"/>
     <Label fx:id="statusLabel"
            text="Ready to play"/>
 
